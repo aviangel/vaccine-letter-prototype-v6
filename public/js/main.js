@@ -1,5 +1,3 @@
-"use strict";
-
 // ES6 or Vanilla JavaScript
 // Add autofocus and error focusing for error summary
 document.addEventListener('DOMContentLoaded', function () {
