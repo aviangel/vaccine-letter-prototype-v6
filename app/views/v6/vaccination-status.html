@@ -1,0 +1,112 @@
+{% extends 'layout-nhsuk.html' %}
+
+{% set version = "v6" %}
+{% set backLink = "" %}
+{% set heading = "Coronavirus (COVID-19) vaccination status for travelling abroad" %}
+{% set mainClasses = "nhsuk-u-padding-0" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "/",
+        text: "Health A to Z"
+      },
+      {
+        href: "/",
+        text: "Coronavirus (COVID-19)"
+      }
+    ],
+    classes: "beta-breadcrumb",
+    href: "/",
+    text: "Coronavirus vaccination"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>{{ heading }}</h1>
+
+      <p>If you are planning to travel abroad, you can get proof that you've been vaccinated against coronavirus (COVID-19). This is your COVID-19 vaccination status.</p>
+
+      <p>Some countries may also require a negative COVID-19 test result. Always check the entry requirements for the country you are visiting before you book your travel. There is <a href="https://www.gov.uk/travel-abroad/">step by step travel advice on GOV.UK</a>.</p>
+
+      <h2>Who can get a COVID-19 vaccination status</h2>
+
+      <p>You can get your COVID-19 vaccination status if all the following apply:</p>
+      <ul>
+        <li>you have had a full course of the COVID-19 vaccine</li>
+        <li>you were vaccinated at a GP surgery, vaccination centre or hospital in England</li>
+        <li>you are aged 16 or older</li>
+      </ul>
+
+      <p>Currently a "full course" means you have had 2 doses of any approved COVID-19 vaccine.</p>
+
+      <p>Children under the age of 16 cannot get a COVID-19 vaccination status. They may need to show a negative test result instead. Check the entry requirements for the country you're visiting.</p>
+
+      <h2>How to get your COVID-19 vaccination status</h2>
+
+      <p>There are several ways to get your COVID-19 vaccination status.</p>
+
+      <h3>In the NHS App</h3>
+
+      <p>You can view and download your COVID-19 vaccination status using the <a href="https://www.nhs.uk/nhs-services/online-services/nhs-app/">NHS App</a>.</p>
+
+      <p>You will need to register with the NHS App at least 2 weeks before your departure date. You need to create an <a href="https://www.nhs.uk/nhs-services/online-services/nhs-log-in/">NHS login</a> to use the NHS App if you do not have one already.</p>
+
+      <p>NHS login and NHS App registrations may take longer than usual when there are high numbers of requests.</p>
+
+      <p>This is not the NHS COVID-19 app.</p>
+
+      <h3>On the NHS website</h3>
+
+      <p>You can view and download your COVID-19 vaccination status online.</p>
+
+      <p>You need an <a href="https://www.nhs.uk/nhs-services/online-services/nhs-log-in/">NHS login</a> to do this. You will be asked to create an NHS login if you do not have one already.</p>
+
+      <p>NHS login registrations may take longer than usual when there are high numbers of requests. You will need to register at least 2 weeks before your departure date.</p>
+
+      {{ actionLink({
+        "text": "Get your COVID-19 vaccination status",
+        "href": ""
+      }) }}
+
+      <h4>Get a letter posted to you</h4>
+
+      <p>You can also get a paper version of your COVID-19 vaccination status letter sent to you. This will be sent to the address currently registered with your GP surgery.</p>
+
+      <p>You do not need an NHS login to do this.</p>
+
+      {{ actionLink({
+        "text": "Get your COVID-19 vaccination status letter",
+        "href": "/v6/"
+      }) }}
+
+      <p>If you cannot use this service you can call 119.</p>
+
+      <p>This must be at least 5 days after you have had your 2nd dose. It can take up to 7 working days for the letter to reach you.</p>
+
+      {{ warningCallout({
+        "heading": "Do not contact your GP",
+        "HTML": "<p>Do not contact your GP surgery about your COVID-19 vaccination status. GPs cannot provide letters showing your vaccine record.</p>"
+      }) }}
+
+      <h2>Protecting your data</h2>
+
+      <p>When you access your COVID-19 vaccination status via the NHS App, or directly via the NHS website, you will use NHS login. NHS login has advanced security features to protect you and minimise any risk of fraud.</p>
+
+      <p>Your vaccination status displays your vaccination record only and no other personal health records.</p>
+
+      <h2>Further information</h2>
+
+      <p><a href="https://www.gov.uk/guidance/demonstrating-your-covid-19-vaccination-status-when-travelling-abroad">GOV.UK: demonstrating your COVID-19 vaccination status when travelling abroad</a></p>
+
+    </div>
+  </div>
+{% endblock %}

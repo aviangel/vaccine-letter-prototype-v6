@@ -1,0 +1,167 @@
+{% extends 'layout-nhsuk.html' %}
+
+{% set version = "v6" %}
+{% set backLink = "" %}
+{% set heading = "Coronavirus (COVID-19) vaccination" %}
+{% set mainClasses = "nhsuk-u-padding-0" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "/",
+        text: "Health A to Z"
+      }
+    ],
+    classes: "beta-breadcrumb",
+    href: "/v6/covid-hub",
+    text: "Coronavirus (COVID-19)"
+  }) }}
+{% endblock %}
+
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+  <div class="nhsuk-u-reading-width">
+
+
+<h1>Coronavirus (COVID-19) vaccination</h1>
+<p class="nhsuk-lede-text">
+  Book your COVID-19 vaccination, read about the vaccines and find out what will happen at your appointment.
+</p>
+
+
+  </div>
+
+  <article>
+
+
+
+<div class="nhsuk-u-reading-width">
+
+    <section>
+
+      {{ actionLink({
+  "text": "Book or manage your COVID-19 vaccination",
+  "href": "#"
+}) }}
+
+
+        <ul class="nhsuk-hub-key-links beta-hub-key-links">
+
+            <li class="nhsuk-hub-key-links__list-item beta-hub-key-links__list-item">
+              <a href="#">
+                COVID-19 vaccines
+              </a>
+            </li>
+
+            <li class="nhsuk-hub-key-links__list-item beta-hub-key-links__list-item">
+              <a href="#">
+                COVID-19 vaccines safety and side effects
+              </a>
+            </li>
+
+            <li class="nhsuk-hub-key-links__list-item beta-hub-key-links__list-item">
+              <a href="#">
+                Who can get vaccinated
+              </a>
+            </li>
+
+            <li class="nhsuk-hub-key-links__list-item beta-hub-key-links__list-item">
+              <a href="#">
+                How you will be contacted
+              </a>
+            </li>
+
+            <li class="nhsuk-hub-key-links__list-item beta-hub-key-links__list-item">
+              <a href="#">
+                What happens at your appointment
+              </a>
+            </li>
+
+            <li class="nhsuk-hub-key-links__list-item beta-hub-key-links__list-item">
+              <a href="#">
+                Health conditions and COVID-19 vaccination
+              </a>
+            </li>
+
+        </ul>
+      </section>
+
+      <div class="nhsuk-u-margin-top-6 nhsuk-hub-after-key-links">
+
+          </div>
+
+          <div class="nhsuk-u-margin-top-6  beta-hub-border-top ">
+  <div class="beta-hub-related-links-title">
+    <h2 class="nhsuk-heading-s ">NHS COVID Pass for trial events and travel abroad</h2>
+  </div>
+  <nav role="navigation">
+    <ul class="beta-hub-related-links">
+
+        <li class="beta-hub-related-links__list-item">
+          <a href="/{{version}}/covid-pass-hub">
+            NHS COVID Pass
+          </a>
+
+        </li>
+
+    </ul>
+  </nav>
+</div>
+
+<div class="nhsuk-u-margin-top-6 ">
+  <div class="beta-hub-related-links-title">
+    <h2 class="nhsuk-heading-s ">Vaccination in other parts of the UK</h2>
+  </div>
+  <nav role="navigation">
+    <ul class="beta-hub-related-links">
+
+        <li class="beta-hub-related-links__list-item">
+          <a href="https://www.nhsinform.scot/healthy-living/immunisation/vaccines/coronavirus-covid-19-vaccine">
+            Scotland – NHS Inform: COVID-19 vaccination
+          </a>
+
+            <div>www.nhsinform.scot</div>
+
+        </li>
+
+        <li class="beta-hub-related-links__list-item">
+          <a href="https://phw.nhs.wales/topics/immunisation-and-vaccines/covid-19-vaccination-information/">
+            Wales – Public Health Wales: COVID-19 vaccination
+          </a>
+
+            <div>phw.nhs.wales</div>
+
+        </li>
+
+        <li class="beta-hub-related-links__list-item">
+          <a href="https://www.nidirect.gov.uk/articles/get-covid-19-vaccination-northern-ireland">
+            Northern Ireland - nidirect: COVID-19 vaccination
+          </a>
+
+            <div>www.nidirect.gov.uk</div>
+
+        </li>
+
+    </ul>
+  </nav>
+</div>
+
+</article>
+
+</div>
+    </div>
+</div>
+{% endblock %}

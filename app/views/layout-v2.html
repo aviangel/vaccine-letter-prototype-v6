@@ -1,0 +1,90 @@
+<!--
+  This is the main layout where you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "template.html" %}
+
+{% block headJS %}
+  <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
+  <script src="/js/cookie-consent.js" data-policy-url="/{{ version }}/cookie-policy" defer></script>
+{% endblock %}
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {% if error %}Error: {% endif %}{{ heading }} - {{ serviceName }} - NHS
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+  {{ header({
+    "transactionalService": {
+        "name": "Get your NHS COVID Pass letter",
+        "href": "/",
+        "longName": "true"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
+{% block outerContent %}
+  {%- if backLink %}
+    <div class="nhsuk-back-link nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-4">
+      <a class="nhsuk-back-link__link" href="/{{ version }}/{{ backLink }}">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Go back</a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+  <footer role="contentinfo">
+    <div class="nhsuk-footer" id="nhsuk-footer">
+      <div class="nhsuk-width-container nhsuk-u-clear">
+        <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+        <ul class="nhsuk-footer__list">
+          <li class="nhsuk-footer__list-item">
+            <a class="nhsuk-footer__list-item-link" href="https://www.nhs.uk/nhs-services/online-services/covid-status-letter-service/accessibility-statement/" target="_blank" rel="noopener noreferrer">Accessibility statement</a>
+          </li>
+          <li class="nhsuk-footer__list-item">
+            <a class="nhsuk-footer__list-item-link" href="/{{ version }}/cookie-policy">Cookie policy</a>
+          </li>
+          <li class="nhsuk-footer__list-item">
+            <a class="nhsuk-footer__list-item-link" href="https://www.nhs.uk/contact-us/covid-status-letter-service-help/" target="_blank" rel="noopener noreferrer">Help and support</a>
+          </li>
+          <li class="nhsuk-footer__list-item">
+            <a class="nhsuk-footer__list-item-link" href="https://www.nhs.uk/nhs-services/online-services/covid-status-letter-service/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+          </li>
+          <li class="nhsuk-footer__list-item">
+            <a class="nhsuk-footer__list-item-link" href="https://www.nhs.uk/nhs-services/online-services/covid-status-letter-service/terms-and-conditions/" target="_blank" rel="noopener noreferrer">Terms and conditions</a>
+          </li>
+        </ul>
+        <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+        <p class="nhsuk-footer__copyright"><span class="nhsuk-u-visually-hidden">Release </span>1.0</p>
+      </div>
+    </div>
+  </footer>
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

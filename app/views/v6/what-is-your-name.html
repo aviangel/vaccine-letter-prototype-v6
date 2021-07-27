@@ -1,0 +1,125 @@
+{% extends 'layout-v2.html' %}
+
+{% set version = "v6" %}
+{% set heading = "What is your name?" %}
+{% set backLink = "do-you-know-nhs-number" %}
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="do-you-know-nhs-number">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if error %}
+        {% if noFirstName %}
+          {% if noLastName %}
+            {{ errorSummary({
+              "titleText": "There is a problem",
+              "errorList": [
+                {
+                  "text": "Enter your first name",
+                  "href": "#first-name"
+                },
+                {
+                  "text": "Enter your last name",
+                  "href": "#last-name"
+                }
+              ]
+            }) }}
+          {% else %}
+            {{ errorSummary({
+              "titleText": "There is a problem",
+              "errorList": [
+                {
+                  "text": "Enter your first name",
+                  "href": "#first-name"
+                }
+              ]
+            }) }}
+          {% endif %}
+        {% else %}
+          {% if noLastName %}
+            {{ errorSummary({
+              "titleText": "There is a problem",
+              "errorList": [
+                {
+                  "text": "Enter your last name",
+                  "href": "#last-name"
+                }
+              ]
+            }) }}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+
+      <form action="/{{ version }}/what-is-your-name" method="post" class="form" id="form">
+
+        <div class="nhsuk-form-group{% if error %} nhsuk-form-group--error{% endif %}">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="name-hint">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                What is your name?
+              </h1>
+            </legend>
+
+            <p class="nhsuk-hint" id="name-hint">Enter the exact name that you have registered with your GP surgery.</p>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="first-name">
+                First name
+              </label>
+              {% if noFirstName %}
+                <span class="nhsuk-error-message" id="firstname-error">
+                    <span class="nhsuk-u-visually-hidden">Error:</span> Enter your first name
+                </span>
+                <input class="nhsuk-input nhsuk-input--error" id="first-name" name="first-name" type="text" aria-describedby="firstname-error">
+              {% else %}
+                <input class="nhsuk-input" id="first-name" name="first-name" type="text" value="{{ data['first-name'] }}">
+              {% endif %}
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="last-name">
+                Last name
+              </label>
+              {% if noLastName %}
+                <span class="nhsuk-error-message" id="lastname-error">
+                    <span class="nhsuk-u-visually-hidden">Error:</span> Enter your last name
+                </span>
+                <input class="nhsuk-input nhsuk-input--error" id="last-name" name="last-name" type="text" aria-describedby="lastname-error">
+              {% else %}
+                <input class="nhsuk-input" id="last-name" name="last-name" type="text" value="{{ data['last-name'] }}">
+              {% endif %}
+            </div>
+          </fieldset>
+
+        </div>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+      <script>
+        if (document.referrer.indexOf('check-your-answers') >= 0) {
+          document.getElementById("form").onsubmit = function () {
+            if ((document.getElementById("first-name").value) && (document.getElementById("last-name").value)) {
+              document.querySelector('#form').action = "/{{ version }}/check-your-answers"
+            }
+          }
+        }
+      </script>
+
+    </div>
+  </div>
+{% endblock %}

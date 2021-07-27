@@ -1,0 +1,74 @@
+{% extends 'layout-v2.html' %}
+
+{% set version = "v6" %}
+{% set heading = "Do you need information about your letter in another language?" %}
+{% set backLink = "accessible-format" %}
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="accessible-format">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if error %}
+        {{ errorSummary({
+          "titleText": "There is a problem",
+          "errorList": [
+            {
+              "text": "Select if you need information about your letter in another language",
+              "href": "#another-language-1"
+            }
+          ]
+        }) }}
+      {% endif %}
+
+      <form action="/{{ version }}/another-language" method="post" class="form" id="form">
+
+        {{ radios({
+          idPrefix: "another-language",
+          name: "another-language",
+          errorMessage: {
+            text: "Select if you need information about your letter in another language"
+          } if error,
+          fieldset: {
+            legend: {
+              text: heading,
+              isPageHeading: true,
+              classes: "nhsuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            html: "<p>Your letter will be in English. But we can send you information about what the letter is for in another language if you need it.</p>
+            <p>You do not need your letter in the language of the country you're travelling to.</p>"
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("another-language", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("another-language", "No")
+            }
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends 'layout-v2.html' %}
+
+{% set version = "v6" %}
+{% set heading = "Which language do you need this information in?" %}
+{% set backLink = "another-language" %}
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="another-language">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if error %}
+        {{ errorSummary({
+          "titleText": "There is a problem",
+          "errorList": [
+            {
+              "text": "Select a language",
+              "href": "#language-1"
+            }
+          ]
+        }) }}
+      {% endif %}
+
+      <form action="/{{ version }}/languages" method="post" class="form" id="form">
+
+        {{ radios({
+          idPrefix: "language",
+          name: "language",
+          errorMessage: {
+            text: "Select a language"
+          } if error,
+          fieldset: {
+            legend: {
+              text: heading,
+              isPageHeading: true,
+              classes: "nhsuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "This information is currently available in the following languages."
+          },
+          items: [
+            {
+              value: "Arabic",
+              text: "Arabic",
+              checked: checked("language", "Arabic")
+            },
+            {
+              value: "Bengali",
+              text: "Bengali",
+              checked: checked("language", "Bengali")
+            },
+            {
+              value: "Bulgarian",
+              text: "Bulgarian",
+              checked: checked("language", "Bulgarian")
+            },
+            {
+              value: "Chinese (Simplified)",
+              text: "Chinese (Simplified)",
+              checked: checked("language", "Chinese (Simplified)")
+            },
+            {
+              value: "Chinese (Traditional)",
+              text: "Chinese (Traditional)",
+              checked: checked("language", "Chinese (Traditional)")
+            },
+            {
+              value: "French",
+              text: "French",
+              checked: checked("language", "French")
+            },
+            {
+              value: "Gujarati",
+              text: "Gujarati",
+              checked: checked("language", "Gujarati")
+            },
+            {
+              value: "Hindi",
+              text: "Hindi",
+              checked: checked("language", "Hindi")
+            },
+            {
+              value: "Italian",
+              text: "Italian",
+              checked: checked("language", "Italian")
+            },
+            {
+              value: "Lithuanian",
+              text: "Lithuanian",
+              checked: checked("language", "Lithuanian")
+            },
+            {
+              value: "Nepali",
+              text: "Nepali",
+              checked: checked("language", "Nepali")
+            },
+            {
+              value: "Polish",
+              text: "Polish",
+              checked: checked("language", "Polish")
+            },
+            {
+              value: "Portuguese",
+              text: "Portuguese",
+              checked: checked("language", "Portuguese")
+            },
+            {
+              value: "Punjabi",
+              text: "Punjabi",
+              checked: checked("language", "Punjabi")
+            },
+            {
+              value: "Romanian",
+              text: "Romanian",
+              checked: checked("language", "Romanian")
+            },
+            {
+              value: "Spanish",
+              text: "Spanish",
+              checked: checked("language", "Spanish")
+            },
+            {
+              value: "Urdu",
+              text: "Urdu",
+              checked: checked("language", "Urdu")
+            }
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

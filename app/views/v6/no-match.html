@@ -1,0 +1,32 @@
+{% extends 'layout-v2.html' %}
+
+{% set version = "v6" %}
+{% set backLink = "check-your-answers" %}
+{% set heading = "We cannot find your details" %}
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+      <p>We cannot find anyone matching the details you have provided. Please check you have entered your details correctly.</p>
+
+      <p>We may not be able to find your details because:</p>
+
+      <ul>
+        <li>you have entered your details incorrectly &ndash; you can try entering them again</li>
+        <li>you have changed your address or surname &ndash; contact your GP surgery to update your details or you can try <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">registering with a GP surgery</a> if you do not have one</li>
+        <li>you did not have your vaccination in England</li>
+      </ul>
+
+      <p>If you have tried these things and you still cannot get a letter, call 119.</p>
+
+      <a href="/{{ version }}/start" class="nhsuk-button">
+        Try again
+      </a>
+
+    </div>
+  </div>
+{% endblock %}

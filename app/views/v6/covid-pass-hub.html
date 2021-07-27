@@ -1,0 +1,188 @@
+{% extends 'layout-nhsuk.html' %}
+
+{% set version = "v6" %}
+{% set backLink = "" %}
+{% set heading = "NHS COVID Pass" %}
+{% set mainClasses = "nhsuk-u-padding-0" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "/",
+        text: "Health A to Z"
+      }
+    ],
+    classes: "beta-breadcrumb",
+    href: "covid-hub",
+    text: "Coronavirus (COVID-19)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>{{ heading }}</h1>
+      <p>An NHS COVID Pass shows your coronavirus (COVID-19) vaccination details or test results. This is your COVID-19 status.</p>
+      <p>You may be asked to show your pass to travel abroad, or at events and venues in England asking for proof of your COVID-19 status.</p>
+      <p>Always check the entry requirements for the country or the venue you're visiting.</p>
+      <p>If you're planning to travel abroad or want to know more about your COVID-19 status:</p>
+      <ul>
+      <li><a href="https://www.gov.uk/guidance/travel-abroad-from-england-during-coronavirus-covid-19">read about travel abroad from England during COVID-19 on GOV.UK</a></li>
+      <li><a href="https://www.gov.uk/guidance/demonstrating-your-covid-19-status/">find out how to demonstrate your COVID-19 status on GOV.UK</a></li>
+    </ul>
+
+      <h2>Who can get an NHS COVID Pass in England</h2>
+      <p>If you're aged 18 or over, you can get an NHS COVID Pass for travel abroad and domestic events depending on your vaccination status or COVID-19 test results.</p>
+
+      <div class="nhsuk-table__panel-with-heading-tab">
+        <h3 class="nhsuk-table__heading-tab">COVID Pass – Travel abroad</h3>
+        <div class="nhsuk-table-container">
+          <table><caption class="nhsuk-u-visually-hidden">Details of what you need to get an NHS COVID Pass to travel abroad</caption>
+          <thead>
+          <tr>
+            <th scope="col">What you need to get a pass</th>
+            <th scope="col">When you can get a pass</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1 or 2 doses of a COVID-19 vaccine used in the UK</td>
+            <td>Usually within 24 hours of having your vaccination – however it can take up to 5 days for your records to be updated</td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="nhsuk-table__panel-with-heading-tab">
+        <h3 class="nhsuk-table__heading-tab">COVID Pass – Domestic events</h3>
+        <div class="nhsuk-table-container">
+          <table><caption class="nhsuk-u-visually-hidden">Details of what you need to get an NHS COVID Pass for certain events and venues in England</caption>
+        <thead>
+        <tr>
+          <th scope="col">What you need to get a pass</th>
+          <th scope="col">When you can get a pass</th>
+        </tr>
+        </thead>
+            <tbody>
+            <tr>
+              <td>to be fully vaccinated with a COVID-19 vaccine used in the UK</td>
+              <td>2 weeks after your 2nd dose, or 2 weeks after 1 dose of the Janssen vaccine</td>
+            </tr>
+            <tr>
+              <td>Negative PCR test or rapid lateral flow test within the past 48 hours</td>
+              <td>As soon as you get your result<br><br>If you did a rapid lateral flow test at home, <a href="https://www.gov.uk/report-covid19-result">report your rapid lateral flow test result on GOV.UK</a> first</td>
+            </tr>
+            <tr>
+              <td>Positive PCR test within the past 6 months</td>
+              <td>After you've finished self-isolating and up to 180 days after taking the test</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+      </div>
+
+
+    
+
+      <p>If you were vaccinated as part of an official clinical trial in England, you should have received a letter confirming this. The letter explains that your COVID-19 status is “fully vaccinated”.</p>
+      <p>If you have not received a letter, contact your clinical trial site.</p>
+      <p>You can also get an NHS COVID Pass showing your vaccination status for domestic events using the NHS App or the online NHS COVID Pass service. You’ll be able to get a digital COVID Pass for travel abroad soon.</p>
+
+
+      <h3>COVID-19 status for children</h3>
+      <p>The NHS COVID Pass is not available for children under the age of 18.</p>
+      <p>If you're travelling abroad, your child may still need to show a negative test result. Check the entry requirements for the country you're visiting.</p>
+      <p>Children under the age of 18 do not need to show a COVID Pass to get into venues in England.</p>
+
+
+      <h2>How to get your NHS COVID Pass</h2>
+      <p>There are different ways to get a COVID Pass.</p>
+
+
+      <h3>Get a digital version</h3>
+      <p>You can get a digital version using the NHS App or NHS website. You can download it as a PDF or get it sent to you in an email.</p>
+      <p>You can get a digital version by:</p>
+
+      <ul>
+        <li><a href="https://www.nhs.uk/nhs-services/online-services/nhs-app/">downloading the NHS App</a> – you must be registered with a GP surgery in England to use the app</li>
+        <li><a href="https://covid-status.service.nhsx.nhs.uk/">using the online NHS COVID Pass service</a></li>
+      </ul>
+
+      <p>You will need an NHS login to use these services. You'll be asked to create one if you do not have an NHS login already.</p>
+
+      <details class="nhsuk-details" nhsuk-polyfilled="true" id="nhsuk-details0" open="">
+        <summary class="nhsuk-details__summary" role="button" aria-controls="nhsuk-details__text0" tabindex="0" aria-expanded="true">
+          <span class="nhsuk-details__summary-text">
+          What is NHS login
+          </span>
+        </summary>
+        <div class="nhsuk-details__text" id="nhsuk-details__text0" aria-hidden="false">
+          
+            <p data-block-key="m9y3y"><a href="/nhs-services/online-services/nhs-log-in/">NHS login</a> makes it easier and quicker for you to securely access digital health and care services with 1 username and password.</p><p data-block-key="7jiav">NHS login registrations may take longer than usual when there are high numbers of requests. You will need to register at least 2 weeks before you want to use your pass.</p>
+          
+        </div>
+      </details>
+
+      <h4>How long digital versions are valid for</h4>
+        <p>If you've had:</p>
+        <ul>
+          <li>a vaccine used in the UK – your pass lasts for 30 days, but the 30-day period refreshes every time you log in</li>
+          <li>a negative PCR test or rapid lateral flow test – your pass is valid for 48 hours after a negative result</li>
+          <li>a positive PCR test – your pass lasts 30 days, but the 30 day period refreshes every time you log in (for up to 180 days after you took the test)</li>
+        </ul>
+        <p>If you download your COVID Pass as a PDF, always check the expiry date before using it.</p>
+        <p>If you're fully vaccinated or had a positive test result, the barcode on a PDF is valid for 30 days.</p>
+
+
+      <h3>Get a paper version (vaccination status only)</h3>
+      <p>You can get an NHS COVID Pass letter sent to you in the post.</p>
+      <p>This shows you've been vaccinated against COVID-19. It does not show COVID-19 test results.</p>
+      <p>You can ask for a letter after having your 2nd dose of the vaccine, or after a single-dose Janssen vaccine. You may need to wait 5 working days before using the service, so that your records will be up to date.</p>
+      <p>You should get the letter within 5 working days.</p>
+      <p>You can use your letter at venues in England where you need to prove your COVID-19 status 2 weeks after you have been fully vaccinated.</p>
+      <p>You do not need to be registered with a GP surgery or have an NHS login for this.</p>
+
+      <p>You can get a letter by:</p>
+      <ul>
+      <li><a href="/{{version}}/start">requesting a COVID Pass letter online</a></li>
+      <li>calling 119 – do not call 119 if you're travelling in more than 4 weeks' time</li>
+      </ul>
+      <p>It is also known as a COVID-19 post vaccination letter. The paper version does not have an expiry date.</p>
+
+      <h2>Protecting your data</h2>
+      <p>When you access your NHS COVID Pass via the NHS App, or directly via the NHS website, you will use NHS login. NHS login has advanced security features to protect you and minimise any risk of fraud.</p>
+      <p>Your COVID Pass only shows your vaccination record or test results, and no other personal health records.</p>
+
+
+      <h2>COVID Passes and vaccination status in other parts of the UK</h2>
+      <ul>
+        <li><a href="https://www.nhsinform.scot/covid-19-vaccine/after-your-vaccine/get-a-record-of-your-coronavirus-covid-19-vaccination-status">Scotland – NHS Inform: Get a record of your COVID-19 vaccination status</a></li>
+        <li><a href="https://gov.wales/demonstrating-your-covid-19-vaccination-status-when-travelling-abroad">Wales – Welsh Government: Get the NHS COVID Pass to show your vaccination status for travel</a></li>
+        <li><a href="https://www.nidirect.gov.uk/articles/get-covid-19-vaccination-northern-ireland">Northern Ireland – nidirect: Get a COVID-19 vaccination in Northern Ireland</a></li>
+      </ul>
+    
+
+
+
+      <div class="nhsuk-review-date">
+      <p class="nhsuk-body-s">
+        Page last reviewed: 19 July 2021
+        <br>
+        Next review due: 2 August 2021
+      </p>
+    </div>
+
+
+
+
+
+    </div>
+  </div>
+{% endblock %}

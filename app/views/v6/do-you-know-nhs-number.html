@@ -1,0 +1,141 @@
+{% extends 'layout-v2.html' %}
+
+{% set version = "v6" %}
+{% set heading = "Do you know your NHS number?" %}
+{% set backLink = "start" %}
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+
+  <div class="nhsuk-back-link">
+    <a class="nhsuk-back-link__link" href="start">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Go back</a>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+
+
+      {% if error %}
+        {% if noNhsNumber %}
+          {{ errorSummary({
+            "titleText": "There is a problem",
+            "errorList": [
+              {
+                "text": "Enter your NHS number",
+                "href": "#nhs-number"
+              }
+            ]
+          }) }}
+        {% endif %}
+        {% if noAnswer %}
+          {{ errorSummary({
+            "titleText": "There is a problem",
+            "errorList": [
+              {
+                "text": "Select if you know your NHS number",
+                "href": "#know-nhs-1"
+              }
+            ]
+          }) }}
+        {% endif %}
+      {% endif %}
+
+      <form action="/{{ version }}/do-you-know-nhs-number" method="post" class="form" id="form">
+
+        <div class="nhsuk-form-group{% if error %} nhsuk-form-group--error{% endif %}">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="know-nhs-hint">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Do you know your NHS number?
+              </h1>
+            </legend>
+
+            <div class="nhsuk-hint" id="know-nhs-hint">
+              <p>Your NHS number is a 10 digit number, like 485 777 3456. You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP online service.</p>
+            </div>
+            {% if error %}
+              {% if noNhsNumber %}
+                <span class="nhsuk-error-message" id="number-error">
+                    <span class="nhsuk-u-visually-hidden">Error:</span> Enter your NHS number
+                </span>
+              {% endif %}
+              {% if noAnswer %}
+                <span class="nhsuk-error-message" id="number-error">
+                    <span class="nhsuk-u-visually-hidden">Error:</span> Select if you know your NHS number
+                </span>
+              {% endif %}
+            {% endif %}
+            <div class="nhsuk-radios nhsuk-radios--conditional">
+             <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="know-nhs-1" name="know-nhs" type="radio" value="Yes" aria-controls="conditional-know-nhs-1" aria-expanded="false">
+                <label class="nhsuk-label nhsuk-radios__label" for="know-nhs-1" id="label1">
+                  Yes, I know my NHS number
+                </label>
+              </div>
+              <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-know-nhs-1">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="nhs-number" id="label2">
+                    NHS number
+                  </label>
+                  {% if noNhsNumber %}
+                    <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-input--error" aria-describedby="number-error" id="nhs-number" name="nhs-number" type="text">
+                  {% else %}
+                    <input class="nhsuk-input nhsuk-u-width-two-thirds" id="nhs-number" name="nhs-number" type="text" value="{{ data['nhs-number'] }}">
+                  {% endif %}
+                </div>
+              </div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="know-nhs-2" name="know-nhs" type="radio" value="No"{% if (data['know-nhs'] == "No") %} checked{% endif %}>
+                <label class="nhsuk-label nhsuk-radios__label" for="know-nhs-2">
+                  No, continue another way
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+
+        </div>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+      <script>
+        if (document.referrer.indexOf('check-your-answers') >= 0) {
+          document.getElementById("form").onsubmit = function () {
+            if (document.getElementById('know-nhs-1').checked) {
+              if (document.getElementById("nhs-number").value) {
+                document.querySelector('#form').action = "/{{ version }}/check-your-answers"
+              }
+            } else {
+              if (document.getElementById('know-nhs-2').checked) {
+                document.querySelector('#form').action = "/{{ version }}/check-your-answers"
+              }
+            }
+          }
+        }
+      </script>
+
+      {% if (data['know-nhs'] == "Yes") %}
+        <script>
+          // fix bug to expand the conditional
+          const yesRadio = document.querySelector('#know-nhs-1')
+          yesRadio.click()
+          yesRadio.setAttribute('aria-expanded', 'true')
+          const conditionalContent = document.querySelector('#conditional-know-nhs-1')
+          conditionalContent.classList.remove('nhsuk-radios__conditional--hidden')
+        </script>
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

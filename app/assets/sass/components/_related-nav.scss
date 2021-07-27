@@ -1,0 +1,62 @@
+// ==========================================================================
+// COMPONENTS / #RELATED-NAV
+// ==========================================================================
+
+.nhsuk-related-nav {
+  border-top: 1px solid $nhsuk-border-color;
+
+  @include mq($until: desktop) {
+    margin-top: nhsuk-spacing(7);
+  }
+}
+
+.nhsuk-related-nav__heading {
+  @include nhsuk-typography-responsive(19, $override-line-height: 1.2);
+
+  margin-bottom: 12px;
+  padding-top: nhsuk-spacing(3);
+}
+
+.nhsuk-related-nav__list {
+  @include nhsuk-typography-responsive(16);
+
+  list-style: none;
+  padding-left: 0;
+}
+
+.nhsuk-related-nav__list {
+  @include nhsuk-typography-responsive(16);
+
+  list-style: none;
+  padding-left: 0;
+}
+
+
+.app-related-nav__heading {
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    padding-top: 16px;
+}
+
+.beta-hub-sibling-nav .beta-hub-sibling-nav__list {
+    padding-left: 12px;
+}
+
+.app-related-nav__list {
+    list-style: none;
+    margin-bottom: 16px;
+    padding-left: 0;
+}
+
+.beta-hub-sibling-nav .beta-hub-sibling-nav__item {
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.beta-hub-sibling-nav .beta-hub-sibling-nav--current {
+    border-left: 4px solid #212b32;
+    color: #212b32;
+    margin-left: -12px;
+    padding-left: 8px;
+}

@@ -1,0 +1,92 @@
+{% extends 'layout-v2.html' %}
+
+{% set version = "v6" %}
+{% set heading = "Do you need your letter in an accessible format?" %}
+{% set backLink = "what-is-your-postcode" %}
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="what-is-your-postcode">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if error %}
+        {{ errorSummary({
+          "titleText": "There is a problem",
+          "errorList": [
+            {
+              "text": "Select an option",
+              "href": "#format-1"
+            }
+          ]
+        }) }}
+      {% endif %}
+
+      <form action="/{{ version }}/accessible-format" method="post" class="form" id="form">
+
+        {{ radios({
+          "idPrefix": "format",
+          "name": "format",
+          "errorMessage": {
+            "text": "Select an option"
+          } if error,
+          "fieldset": {
+            "legend": {
+              "text": heading,
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+            "text": "We can send you an audio version, Braille or large print letter if you need it. We can also send information about what your letter is for in another language, but only if you do not need an accessible version."
+          },
+          "items": [
+            {
+              "value": "Yes accessible",
+              "text": "Yes, I need my letter in an accessible format",
+              "checked": checked("format", "Yes accessible")
+            },
+            {
+              "value": "Not requested",
+              "text": "No, I do not need my letter in an accessible format",
+              "checked": checked("format", "Not requested")
+            }
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    <!--
+      <script>
+        if (document.referrer.indexOf('check-your-answers') >= 0) {
+          document.getElementById("form").onsubmit = function () {
+            const checked = document.querySelectorAll('input:checked')
+            if (checked.length >= 1) {
+              if (checked[0].value == "Not requested") {
+                document.querySelector('#form').method = "get"
+                document.querySelector('#form').action = "/{{ version }}/another-language"
+              } else {
+                document.querySelector('#form').action = "/{{ version }}/check-your-answers"
+              }
+            }
+          }
+        }
+      </script>
+    -->
+
+    </div>
+  </div>
+{% endblock %}

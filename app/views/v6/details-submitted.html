@@ -1,0 +1,51 @@
+{% extends 'layout-v2.html' %}
+
+{% set version = "v6" %}
+{% set backLink = "" %}
+{% set heading = "Your details have been submitted" %}
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">{{ heading }}</h1>
+
+      <p>We will now check the details you have sent.</p>
+
+      <h2 class="nhsuk-heading-m">If we can find your vaccination record</h2>
+      <p>If we can find your vaccination record, we will send you an NHS COVID Pass letter to the address you have registered with your GP surgery.</p>
+      <p>You should get this letter within 5 working days.</p>
+      <p>Keep this letter safe. You can use this as proof of your coronavirus (COVID-19) vaccination status.</p>
+
+
+      <h2 class="nhsuk-heading-m">If we cannot find your vaccination record</h2>
+      <p>If we cannot find your vaccination record, you will not receive an NHS COVID Pass letter.</p>
+      <p>But we will let you know if we cannot find your vaccination record.</p>
+      <p>We will contact you by the method you selected on the previous screen.</p>
+      <p>We may not be able to find your vaccination record because:</p>
+
+      <ul>
+        <li>you entered your details incorrectly</li>
+        <li>you’re not fully vaccinated</li>
+        <li>you did not have your vaccination in England</li>
+        <li>it has been less than 5 working days since your 2nd dose (or 1 dose of the Janssen vaccine) and the system has not been updated</li>
+      </ul>
+
+      <p>You can try:</p>
+
+      <ul>
+        <li>entering your details again</li>
+        <li>checking the details your GP surgery has for you are up to date or <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">registering with a GP surgery</a> if you do not have one – if you need to update your details you can try using this service again after you’ve updated them</li>
+        <li>wait until 5 working days after you were fully vaccinated</li>
+      </ul>
+
+      <p>If you have tried these things and you still cannot get a letter, call 119.</p>
+
+      <a href="/{{ version }}">
+        Home
+      </a>
+
+    </div>
+  </div>
+{% endblock %}

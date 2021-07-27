@@ -1,0 +1,79 @@
+{% extends 'layout-v2.html' %}
+
+{% set version = "v6" %}
+{% set heading = "How would you like to be contacted if your letter request is not successful?" %}
+{% set backLink = "check-your-answers" %}
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="check-your-answers">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if error %}
+        {{ errorSummary({
+          "titleText": "There is a problem",
+          "errorList": [
+            {
+              "text": "Select an option",
+              "href": "#contacted-1"
+            }
+          ]
+        }) }}
+      {% endif %}
+
+      <form action="/{{ version }}/how-would-you-like-to-be-contacted" method="post" class="form" id="form">
+
+        {{ radios({
+          "idPrefix": "contacted",
+          "name": "contacted",
+          "errorMessage": {
+            "text": "Select an option"
+          } if error,
+          "fieldset": {
+            "legend": {
+              "text": heading,
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+            "text": "If we are unable to send you a letter, we can contact you to let you know by one of the following methods."
+          },
+          "items": [
+            {
+              "value": "Email",
+              "text": "By email to ********e27@***e.co.uk"
+            },
+            {
+              "value": "Text",
+              "text": "By text to mobile ending 313"
+            },
+            {
+              "value": "Letter",
+              "text": "By letter to LS6 4PU"
+            },
+            {
+              "value": "I do not want to be contacted",
+              "text": "I do not want to be contacted"
+            }
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
